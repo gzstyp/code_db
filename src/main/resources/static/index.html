@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>检疫期系统代码生成器</title>
+    <script src="js/jquery.min.js"></script>
+    <script src="layui/layui.all.js"></script>
+    <script src="js/page.code.js"></script>
+    <link href="css/style.css" rel='stylesheet' type='text/css' />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+</head>
+<body>
+<div class="main">
+    <form action="code/create" name="form_code" id="form_code" method="post">
+        <ul class="left-form">
+            <h2>配置参数</h2>
+            <li>
+                <input type="text" id='nameSpace' name='nameSpace' placeholder="MyBatis映射文件的命名空间"/>
+                <div class="clear"></div>
+            </li>
+            <li>
+                <input type="text" id='className' name='className' placeholder="实体类名且首字母大写"/>
+                <div class="clear"></div>
+            </li>
+            <li>
+                <input type="text" id='table' name='table' placeholder="数据库表名"/>
+                <div class="clear"></div>
+            </li>
+            <li>
+                <input type="text" id='keyId' name='keyId' placeholder="表的主键字段"/>
+                <div class="clear"></div>
+            </li>
+            <div class="align-center" style="margin-top:20px;"><a href="javascript:thisPage.code_craete();" style="margin-right:20px;">提交</a><a href="javascript:thisPage.reset();" style="margin-left:20px;">重置</a></div>
+            <div class="clear"></div>
+        </ul>
+        <div class="clear"></div>
+    </form>
+</div>
+<div id="div_login" style="visibility:hidden;">
+    <div style="margin-top: 50px; text-align: center;"><span style="font-size:14px;color:#6a6a67;">账号：</span><span><input style="width: 150px; color: #9ba0d1; height: 24px; line-height: 24px;text-align: left;padding-left:2px;" title="登录账号" id="userName" type="text" placeholder="输入登录账号" autocomplete="off"/></span><span style="color: red; margin-left: 10px;" >*</span></div>
+    <div style="margin-top: 10px; text-align: center;"><span style="font-size:14px;color:#6a6a67;">密码：</span><span><input style="width: 150px; color: #03831a; height: 24px; line-height: 24px;text-align: left;padding-left:2px;" title="登录密码" id="password" type="password" placeholder="输入登录密码" autocomplete="off" onpaste="return false" oncontextmenu="return false" oncopy="return false" oncut="return false"/></span><span style="color: red; margin-left: 10px;" >*</span></div>
+</div>
+<script type="text/javascript">
+    ;(function ($) {
+        thisPage = {
+            init : function (){
+                winFn.ajaxPost('/check',{},function (data) {
+                    if (data.code != 200) {
+                        $("#div_login").css("visibility","visible");
+                        winFn.login('登录','#div_login',['300px','250px;'],function(index){
+                            thisPage.userLogin();
+                        });
+                    }
+                },function (err){winFn.msg('连接服务器失败,'+err);})
+                $(document).keyup(function(event){
+                    if (event.keyCode == 13){
+                    }
+                });
+            },
+            /**登录*/
+            userLogin : function () {
+                if(winFn.inputRequired('#userName')){
+                    winFn.msg('请输入登录账号');
+                    return;
+                }
+                if(winFn.inputRequired('#password')){
+                    winFn.msg('请输入登录密码');
+                    return;
+                }
+                paramas = {
+                    userName : $('#userName').val(),
+                    password : $('#password').val()
+                }
+                winFn.loadAjax('正在登录,请稍候……');
+                winFn.ajaxPost('/login',paramas,function (data){
+                    if (data.code == 200) {
+                        $("#div_login").css("visibility","hidden");
+                        layer.closeAll();
+                        winFn.tipsRb(data.msg)
+                    } else {
+                        winFn.msg(data.msg);
+                    }
+                },function (err){winFn.msg('连接服务器失败,'+err);})
+            },
+            code_craete : function (){
+                if(winFn.inputRequired('#nameSpace')){
+                    winFn.msg('请输入mybatis映射文件的命名空间,如:user');
+                    return;
+                }
+                if(winFn.inputRequired('#className')){
+                    winFn.msg('请输入实体类名且首字母大写,如:User');
+                    return;
+                }
+                if(winFn.inputRequired('#table')){
+                    winFn.msg('小哥,请输入表名!');
+                    return;
+                }
+                if(winFn.inputRequired('#keyId')){
+                    winFn.msg('请输入表的主键字段');
+                    return;
+                }
+                var params = {
+                    table : winFn.getDomValue('#table'),
+                    nameSpace : winFn.getDomValue('#nameSpace'),
+                    className : winFn.getDomValue('#className'),
+                    keyId : winFn.getDomValue('#keyId')
+                };
+                winFn.loadAjax('正在处理,请稍候……');
+                winFn.ajaxPost('code/queryExistTable',params,function(data){
+                    layer.closeAll();
+                    if(data.code === 200){
+                        $("#form_code").submit();
+                        //winFn.clearFormData('#form_code');
+                        winFn.tipsRb('处理完成,请等待下载!');
+                    }else{
+                        winFn.msg(data.msg);
+                    }
+                },function(err){
+                    layer.closeAll();
+                    winFn.msg('连接服务器失败');
+                });
+            },
+            reset : function () {
+                winFn.clearFormData('#form_code');
+            }
+        }
+        thisPage.init();
+    })(jQuery);
+</script>
+</body>
+</html>

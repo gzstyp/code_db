@@ -1,0 +1,300 @@
+/* reset */
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,dl,dt,dd,ol,nav ul,nav li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}
+article, aside, details, figcaption, figure,footer, header, hgroup, menu, nav, section {display: block;}
+ol,ul{list-style:none;margin:0px;padding:0px;}
+blockquote,q{quotes:none;}
+blockquote:before,blockquote:after,q:before,q:after{content:'';content:none;}
+table{border-collapse:collapse;border-spacing:0;}
+/* start editing from here */
+a{text-decoration:none;}
+.txt-rt{text-align:right;}/* text align right */
+.txt-lt{text-align:left;}/* text align left */
+.txt-center{text-align:center;}/* text align center */
+.float-rt{float:right;}/* float right */
+.clear{clear:both;}/* clear float */
+.pos-relative{position:relative;}/* Position Relative */
+.pos-absolute{position:absolute;}/* Position Absolute */
+.vertical-base{	vertical-align:baseline;}/* vertical align baseline */
+.vertical-top{	vertical-align:top;}/* vertical align top */
+nav.vertical ul li{	display:block;}/* vertical menu */
+nav.horizontal ul li{	display: inline-block;}/* horizontal menu */
+img{max-width:100%;}
+
+body{
+	background:#eee;
+	font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.main{
+	margin:20em auto 0;
+	width:40%;
+	background: #fff;
+}
+.header {
+	text-align:center;
+	padding:1.3em;
+}
+
+.main h2{
+	text-align:center;
+	font-size:17px;
+	font-weight:600;
+	margin-top: -10px;
+	margin-bottom: 10px;
+	color:#3F3D3D;
+}
+
+.left-form{
+	float:left;
+	margin:22px 28px;
+	width:96%;
+}
+.left-form input[type=text],.left-form input[type=email],.left-form input[type=password] {
+	float:left;
+	font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	width:80%;
+	padding: 0.7em 2em 0.7em 1em;
+	border:none;
+	color: #000;
+	font-size:15px;
+	float: left;
+	outline: none;
+}
+
+form{
+	padding-bottom: 2em;
+	border-radius:8px;
+	height:260px;
+}
+
+.left-form li{
+	display:block;
+	color:#4D4949;
+	border:1px solid #EBEBEB;
+	border-radius: 0.3em;
+	-webkit-border-radius:0.3em;
+  	-moz-border-radius:0.3em;
+	-o-border-radius:0.3em;
+	margin-bottom: 10px;
+}
+
+.left-form input[type=submit]{
+  padding:10px 19px;
+  border-radius:0.3em;
+ -webkit-border-radius:0.3em;
+  -moz-border-radius:0.3em;
+  -o-border-radius:0.3em;
+   color:#4D4949;
+  background:#F3F3F3;
+  border:1px solid #EBEBEB;
+  font-weight:bold;
+  font-size:15px;
+  outline:none;
+  transition: all 0.5s ease-out;
+  -webkit-transition: all 0.5s ease-out;
+  -moz-transition: all 0.5s ease-out;
+  -ms-transition: all 0.5s ease-out;
+  -o-transition: all 0.5s ease-out;
+  margin-top:15px;
+  cursor: pointer;
+}
+
+.align-center{
+	margin:0 auto; /* 居中 这个是必须的，，其它的属性非必须 */
+	width:500px; /* 给个宽度 顶到浏览器的两边就看不出居中效果了 */
+	text-align:center; /* 文字等内容居中 */
+}
+
+@media only screen and (max-width:1920px) and (min-width:1440px) {
+	.main{
+	width:70%;
+	margin:20em auto 0;
+	}
+	.copy-right p {
+	margin: 3.8em 0em;
+	}
+}
+@media only screen and (max-width:1440px) and (min-width:1366px) {
+	.main{
+	width:80%;
+	margin:10em auto 0;
+	}
+	.copy-right p {
+	margin: 3.8em 0em;
+	}
+}
+@media only screen and (max-width:1366px) and (min-width:1280px) {
+	.main{
+	width:82%;
+	margin:10em auto 0;
+	}
+	.copy-right p {
+	margin: 4em 0em;
+	}
+}
+@media only screen and (max-width:1280px) and (min-width:1024px) {
+	.main{
+	width:89%;
+	margin:10em auto 0;
+	}
+	.copy-right p {
+	margin: 3.5em 0em;
+	}
+}
+@media only screen and (max-width:1024px) and (min-width:768px) {
+	.main{
+	width:97%;
+	margin:5em auto 0;
+	}
+	.right-form input[type=text], input[type=password] {
+	font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	width: 86%;
+	}
+	.copy-right p {
+	margin: 3.5em 0em;
+	}
+}
+@media only screen and (max-width:768px) and (min-width:640px) {
+	.main{
+	width:95%;
+	margin:5em auto 0;
+	}
+	.right-form input[type=text], input[type=password] {
+	font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	padding: 0.7em 1em 0.7em 0em;
+	width:89%;
+	}
+	.right-form {
+	 	float:none;
+		width:88%;
+		text-align: center;
+	}
+	.main h2,.main h3{
+		text-align:center;
+	}
+	.main h4 {
+		float:left;
+		margin: 7px 36px;
+	}
+	.main h3{
+	margin-top:-2em;
+	}
+	.right-form input[type=submit] {
+		float: right;
+		padding: 8px 19px;
+		margin:2px 3px;
+	}
+	.copy-right p {
+	margin: 3.5em 0em;
+	}
+}	
+@media only screen and (max-width:640px) and (min-width:480px) {
+	.main{
+	width:95%;
+	margin:5em auto 0;
+	}
+	.right-form input[type=text], input[type=password] {
+	font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	padding: 0.7em 1em 0.7em 0em;
+	width:89%;
+	}
+	.right-form {
+		float:none;
+		width:88%;
+		text-align: center;
+	}
+	.main h2,.main h3{
+	text-align:center;
+	}
+	.right-form li{
+		margin-left:16px;
+	}
+	.main h4 {
+	float:left;
+	margin: 7px 17px;
+	}
+	.right-form input[type=submit] {
+	float: right;
+	padding: 8px 19px;
+	margin:2px 3px;
+	}
+	.copy-right p {
+		margin: 3.5em 0em;
+	}
+}
+@media only screen and (max-width:480px) and (min-width:320px) {
+	.main{
+	width:95%;
+	margin:2em auto 0;
+	}
+	.main p{
+	padding:16px 20px;
+	}
+	.left-form input[type=text], .left-form input[type=email], .left-form input[type=password] {
+	font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	padding: 0.7em 1em 0.7em 1em;
+	width: 70%;
+	}
+	.right-form input[type=text], input[type=password] {
+	font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	padding: 0.7em 2em 0.7em 0em;
+	width:89%;
+	}
+	.right-form{
+	width:83%;
+	float:none;
+	text-align: center;
+	}
+	.main h2,.main h3{
+	text-align:center;
+	}
+	.main h4 {
+	float:left;
+	margin: 7px 17px;
+	}
+	.right-form input[type=submit] {
+	float: right;
+	padding: 8px 19px;
+	margin:2px 3px;
+	}
+	.copy-right p {
+	margin: 3em 0em;
+	}
+}	
+@media only screen and (max-width:320px) and (min-width:240px) {
+	.main{
+	width:96%;
+	margin:2em auto 0;
+	}
+	.main p{
+	padding:16px 17px;
+	}
+	.right-form input[type=text], input[type=password] {
+	font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	padding: 0.6em 0.9em 0.6em 0em;
+	width:89%;
+	}
+	.left-form, .right-form{
+	text-align: center;
+	}
+	.main h2,.main h3{
+	text-align:center;
+	}
+	.main h4 {
+	float:left;
+	margin: 7px 17px;
+	}
+	.right-form input[type=submit] {
+	float: right;
+	padding: 8px 19px;
+	margin:2px 3px;
+	}
+	.icon{
+	margin: 7px 5px 9px 0px;
+	}
+}
+a:link,a:visited,a:hover,a:active{
+	text-decoration: none;
+	outline:none;
+	font-size:14px;
+	text-decoration:none;
+}

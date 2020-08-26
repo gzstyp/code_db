@@ -1,0 +1,29 @@
+/**euiFn.combobox({id:'id',url:url,onChange:function(newValue,oldValue){}});*/
+combobox : function(options){
+    $('#'+options.id).combobox({
+        url: options.url,
+        method: 'get',
+        valueField: 'id',
+        textField: 'text',
+        panelHeight:'auto',
+        panelMaxHeight:300,
+        onLoadError:function(){
+            layerFn.failure();
+        },
+        onChange : options.onChange,
+        editable:false
+    });
+}
+euiFn.combobox(
+    {
+        id:'TEMPLATE_KEY',url:'eaTemplateConfig/template_names',
+        onChange:function(newValue,oldValue){
+            thisPage.KeyOnChange(newValue,oldValue);
+        },
+    }
+);
+euiFn.combobox(
+    {
+        id:'TEMPLATE_CONFIG',url:'EaSetting/getComBox',
+    }
+);
